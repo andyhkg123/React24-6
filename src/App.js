@@ -1,9 +1,15 @@
 import "./App.css";
 import Navbar from "./components/Navbar";
 
-function App() {
+async function App() {
   //logic
-  const name = "johnathan";
+  let result = "";
+  const response = await fetch("http://api.github.com/users/andyhkg123");
+  result = await response.json();
+  console.log(result);
+  if (!result) {
+    return <div>Loading.....</div>;
+  }
   return (
     <div className="App">
       <Navbar />
